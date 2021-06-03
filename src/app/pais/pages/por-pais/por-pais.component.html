@@ -3,19 +3,14 @@
 <hr>
 <div class="row">
     <div class="col">
-        <app-pais-input (onEnter)="buscar($event)" (onDebounce)="getSugerencias($event)" [placeholder]="placeholder" [termino]="termino"></app-pais-input>
+        <app-pais-input 
+            (onEnter)="buscar($event)" 
+            (onDebounce)="getSugerencias($event)" 
+            [placeholder]="placeholder" 
+            [termino]="termino"
+            [sugerencias]="sugerencias"></app-pais-input>
     </div>
 </div>
-
-<ul class="list-group" *ngIf="mostrarSugerencia">
-    <li class="list-group-item list-group-item.action" (click)="buscar(termino)">
-        <small>Buscar</small> "{{termino}}"
-    </li>
-
-    <li *ngFor="let item of sugerencias" class="list-group-item list-group-item.action" >
-        <a [routerLink]="['/pais', item.alpha2Code]">{{item.name}}</a>
-    </li>
-</ul>
 
 <hr>
 

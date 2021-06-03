@@ -3,7 +3,11 @@
 <hr>
 <div class="row">
     <div class="col">
-        <app-pais-input (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)" [placeholder]="placeholder"></app-pais-input>
+        <app-pais-input 
+            (onEnter)="buscar($event)" 
+            (onDebounce)="getSugerencias($event)" 
+            [placeholder]="placeholder"
+            [sugerencias]="sugerencias"></app-pais-input>
     </div>
 </div>
 <hr>

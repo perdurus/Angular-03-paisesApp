@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output, OnInit, Input} from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { Country } from '../../interfaces/paises.interface';
 
 @Component({
   selector: 'app-pais-input',
@@ -13,10 +14,12 @@ export class PaisInputComponent implements OnInit{
   @Output() onEnter:EventEmitter<string> = new EventEmitter();
   @Output() onDebounce:EventEmitter<string> = new EventEmitter();
   @Input() placeholder:string = '';
+  @Input() termino:string ='';
+  @Input() sugerencias:Country[] =[];
+
+  mostrarSugerencia: boolean = false;
 
   debouncer: Subject<string> = new Subject();
-
-  @Input() termino:string ='';
   
   constructor() { }
 
@@ -26,6 +29,7 @@ export class PaisInputComponent implements OnInit{
     subscribe(
       valor=>{
         this.onDebounce.emit(valor);
+        this.mostrarSugerencia = this.termino.length > 0 ? true : false;
       }
     );
   }
@@ -36,6 +40,7 @@ export class PaisInputComponent implements OnInit{
 
   buscar(){
     this.onEnter.emit(this.termino);
+    this.mostrarSugerencia = false;
     //console.log('Hola mundo' + this.termino);
-  };
+  }
 }

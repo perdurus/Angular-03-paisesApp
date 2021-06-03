@@ -14,6 +14,7 @@ export class PorCapitalComponent{
   hayError:boolean =false;
   paises:Country[] =[];
   placeholder:string = 'Introduce la capital de un país...';
+  sugerencias:Country[] =[];
 
   constructor(private paisService: PaisService) { }
 
@@ -34,9 +35,15 @@ export class PorCapitalComponent{
     //this.paises.length();
   }
 
-  //ToDo 
-  sugerencias( termino:string){
-    this.hayError = false;
-  }
 
+  getSugerencias( termino:string){
+    this.hayError = false;
+    this.termino = termino;
+    //this.mostrarSugerencia = true;
+
+    this.paisService.buscarCapital(termino).subscribe(
+      paises=> this.sugerencias = paises.splice(0,10),
+      (err) => this.sugerencias=[]
+    )
+  }
 }

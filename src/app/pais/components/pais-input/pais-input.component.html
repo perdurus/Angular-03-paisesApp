@@ -8,3 +8,13 @@
            [(ngModel)]="termino"
            (input)="teclaPresionada()">
 </form>
+
+<ul class="list-group" *ngIf="mostrarSugerencia">
+    <li class="list-group-item list-group-item.action">
+        <small>Buscar</small> "{{termino}}"
+    </li>
+
+    <li *ngFor="let item of sugerencias" class="list-group-item list-group-item.action" >
+        <a [routerLink]="['/pais', item.alpha2Code]">{{item.name}}</a>
+    </li>
+</ul>
