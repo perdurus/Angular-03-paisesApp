@@ -16,7 +16,7 @@ export class PaisInputComponent implements OnInit{
 
   debouncer: Subject<string> = new Subject();
 
-  termino:string ='';
+  @Input() termino:string ='';
   
   constructor() { }
 
