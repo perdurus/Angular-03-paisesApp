@@ -16,6 +16,7 @@ export class PaisInputComponent implements OnInit{
   @Input() placeholder:string = '';
   @Input() termino:string ='';
   @Input() sugerencias:Country[] =[];
+  @Input() tipoBusqueda:string ='';
 
   mostrarSugerencia: boolean = false;
 

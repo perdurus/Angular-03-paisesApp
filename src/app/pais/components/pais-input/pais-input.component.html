@@ -15,6 +15,6 @@
     </li>
 
     <li *ngFor="let item of sugerencias" class="list-group-item list-group-item.action" >
-        <a [routerLink]="['/pais', item.alpha2Code]">{{item.name}}</a>
+        <a [routerLink]="['/pais', item.alpha2Code]">{{ tipoBusqueda==='PAIS'?item.name:item.capital + ', ' + item.name }}</a>
     </li>
 </ul>
